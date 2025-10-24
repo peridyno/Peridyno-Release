@@ -1,6 +1,7 @@
 .DS_Store
 *.o
 *~
+.venv/*
 .sconsign.dblite
 *.pyc
 *.sln
@@ -42,11 +43,14 @@ buildDebug/*
 *.comp.spv
 *.spv
 
-.idea/
+.idea/*
 cmake-build-*
 build-*
 
 imgui.ini
 compile_commands.json
 
-Windows-Qt/packages/com.peridyno/data
+Peridyno-Qt-win/packages/com.peridyno/data
+PyPeridyno-Package-win/PyPeridyno.egg-info/*
+PyPeridyno-Package-win/dist/*
+PyPeridyno-Package-win/PackageTutorial.md
