@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Peridyno</Name>
+    <Version>1.2.1</Version>
+    <Title>Peridyno</Title>
+    <Publisher>Qt-Project</Publisher>
+    <!-- Directory name is used in component.xml -->
+    <StartMenuDir>Peridyno</StartMenuDir>
+    <TargetDir>@HomeDir@/Peridyno</TargetDir>
+</Installer>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Peridyno-Qt</DisplayName>
+    <Description>PeriDyno is a CUDA-based, highly parallel physics engine targeted at providing real-time simulation of physical environments for intelligent agents.</Description>
+    <Version>1.2.1</Version>
+    <ReleaseDate>2025-10-24</ReleaseDate>
+    <Default>true</Default>
+    <Script>installscript.qs</Script>
+</Package>
