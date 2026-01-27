@@ -52,4 +52,15 @@ compile_commands.json
 
 Peridyno-Qt-win/packages/com.peridyno/data
 PyPeridyno-Package-win/PyPeridyno.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_DualParticleSystem.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_HeightField.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_Modeling.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_Multiphysics.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_ParticleSystem.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_Peridynamics.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_Qt.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_RigidBody.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_SemiAnalyticalScheme.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_Topology.egg-info/*
+PyPeridyno-Package-win/PyPeridyno_Volume.egg-info/*
 PyPeridyno-Package-win/dist/*

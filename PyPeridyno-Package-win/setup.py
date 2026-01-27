@@ -29,11 +29,11 @@ def copyData():
         shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
 
         # copy example
-        os.makedirs('C:/ProgramData/Peridyno/data/example', exist_ok=True)
-        example_dir = os.getcwd()
-        source_path = os.path.join(example_dir, 'src/example/')
-        destination_path = 'C:/ProgramData/Peridyno/data/example'
-        shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
+        # os.makedirs('C:/ProgramData/Peridyno/data/example', exist_ok=True)
+        # example_dir = os.getcwd()
+        # source_path = os.path.join(example_dir, 'src/example/')
+        # destination_path = 'C:/ProgramData/Peridyno/data/example'
+        # shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
 
         return True
     except PermissionError as e:
@@ -121,11 +121,28 @@ def downloadExtract(zipUrl):
     except Exception as e:
             print(f"Error during download and extraction: {e}")
             return False
+    
+def extractLocal(zipPath):
+    try:
+        print(f"Extracting from local path: {zipPath}...")
+        with zipfile.ZipFile(zipPath, 'r') as zip_ref:
+            python_dir = sys.prefix
+            extract_path = python_dir
+
+            print(f"Extracting to {extract_path}")
+
+            zip_ref.extractall(extract_path)
+
+        print("Local extraction complete successful!")
+        return True
+    except Exception as e:
+        print(f"Error during local extraction: {e}")
+        return False
 
 class CustomInstallCommand(install):
     def run(self):
 
-        windowsUrl = "http://10.0.0.64:4040/api/public/dl/gSh9w2TT/Peridyno/Release/PyPeridyno-windows/PyPeridyno-windows-1.2.1.zip"
+        # windowsUrl = "http://10.0.0.64:4040/api/public/dl/gSh9w2TT/Peridyno/Release/PyPeridyno-windows/PyPeridyno-windows-1.2.1.zip"
 
         if sys.platform == 'win32':
             # windows
@@ -137,23 +154,31 @@ class CustomInstallCommand(install):
                 print("copy data failed")
                 sys.exit(0)
 
-            if copyCufft():
-                print("copy cufft successfully")
-            else:
-                print("copy cufft failed")
-                sys.exit(0)
+            # HeightField
+            # if copyCufft():
+            #     print("copy cufft successfully")
+            # else:
+            #     print("copy cufft failed")
+            #     sys.exit(0)
 
-            if checkQt():
-                print("checkQt successfully")
-            else:
-                print("Please install Qt")
-                sys.exit(0)
+            # Qt
+            # if checkQt():
+            #     print("checkQt successfully")
+            # else:
+            #     print("Please install Qt")
+            #     sys.exit(0)
 
-            if downloadExtract(windowsUrl):
-                print("Download complete")
-            else:
-                print("Download failed")
-                sys.exit(0)
+            # if extractLocal(localZipPath):
+            #     print("Local extraction complete!")
+            # else:
+            #     print("Local extraction failed!")
+            #     sys.exit(0)
+
+            # if downloadExtract(windowsUrl):
+            #     print("Download complete")
+            # else:
+            #     print("Download failed")
+            #     sys.exit(0)
 
             install.run(self)
         elif sys.platform.startswith('linux'):
@@ -163,8 +188,20 @@ class CustomInstallCommand(install):
 
 
 setuptools.setup(
-    name="PyPeridyno",
-    version="1.2.3",
+    #name="PyPeridyno",
+    #name="PyPeridyno_DualParticleSystem",
+    #name="PyPeridyno_HeightField",
+    #name="PyPeridyno_Modeling",
+    #name="PyPeridyno_Multiphysics",
+    #name="PyPeridyno_ParticleSystem",
+    #name="PyPeridyno_Peridynamics",
+    #name="PyPeridyno_Qt",
+    #name="PyPeridyno_RigidBody",
+    #name="PyPeridyno_SemiAnalyticalScheme",
+    #name="PyPeridyno_Topology",
+    #name="PyPeridyno_Volume",
+    
+    version="1.2.1",
     author="unibeam",
     author_email="xiaowei@iscas.ac.cn",
     description="A python package for Peridyno",
@@ -175,13 +212,75 @@ setuptools.setup(
     packages=find_packages(),
     # package_dir={'PyPeridyno':'src'}
     package_data={
-        'PyPeridyno': ['*.dll', '*.pyd', '*.lib', '*.exe'],
+        'PyPeridyno_SemiAnalyticalScheme': ['*.dll', '*.pyd', '*.lib', '*.exe'],
     },
     data_files=[
         ('.', [f for pattern in ['src/*.dll', 'src/*.pyd', 'src/*.lib',
          'src/*.exe', 'src/*.exp'] for f in glob.glob(pattern)])
     ],
-    install_requires=[  # 如果需要其他依赖，请列出
+    install_requires=[
+        # PyPeridyno
+        #"PyPeridyno_Topology==1.2.1"
+
+        # PyPeridyno_DualParticleSystem
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_SemiAnalyticalScheme==1.2.1",
+        # "PyPeridyno_ParticleSystem==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+        # "PyPeridyno_Topology==1.2.1"
+
+        # PyPeridyno_HeightField
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_RigidBody==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+
+        # PyPeridyno_Modeling
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+
+        # PyPeridyno_Multiphysics
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+        # "PyPeridyno_RigidBody==1.2.1",
+        # "PyPeridyno_ParticleSystem==1.2.1",
+        # "PyPeridyno_Volume==1.2.1",
+        # "PyPeridyno_Peridynamics==1.2.1",
+
+        # PyPeridyno_ParticleSystem
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+
+        # PyPeridyno_Peridynamics
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+        # "PyPeridyno_ParticleSystem==1.2.1",
+
+        # PyPeridyno_Qt
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+
+        # PyPeridyno_RigidBody
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+
+        # PyPeridyno_SemiAnalyticalScheme
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+        # "PyPeridyno_ParticleSystem==1.2.1",
+
+        # PyPeridyno_Topology
+
+        # PyPeridyno_Volume
+        # "PyPeridyno==1.2.1",
+        # "PyPeridyno_Topology==1.2.1",
+        # "PyPeridyno_Modeling==1.2.1",
+        # 如果需要其他依赖，请列出
     ],
     include_package_data=True,
     classifiers=[
